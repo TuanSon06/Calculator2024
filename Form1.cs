@@ -162,9 +162,18 @@ namespace Project_Calculator
 
         private void HandleBackspace()
         {
-            if (!string.IsNullOrEmpty(lbl_result.Text))
+            if (!string.IsNullOrEmpty(lbl_result.Text) && lbl_result.Text != "0")
             {
+                // Xóa ký tự cuối cùng trên lbl_result
                 lbl_result.Text = lbl_result.Text.Substring(0, lbl_result.Text.Length - 1);
+
+                // Xóa ký tự cuối trên lbl_old (nếu có)
+                if (lbl_old.Text.Length > 0)
+                {
+                    lbl_old.Text = lbl_old.Text.Substring(0, lbl_old.Text.Length - 1);
+                }
+
+                // Nếu lbl_result rỗng, đặt lại thành "0"
                 if (string.IsNullOrEmpty(lbl_result.Text))
                 {
                     lbl_result.Text = "0";
